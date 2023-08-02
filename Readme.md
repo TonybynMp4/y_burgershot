@@ -1,0 +1,382 @@
+# A Burgershot job for the Qbox Framework
+
+You can add / remove items from the config.lua file.
+Obtaining the ingredients can be done by using an ox_inventory shop, but you can do it however you want (like having a farming company that sells these ingredients to the BurgerShot).
+
+I don't provide a location for qbx-management, i'll let you do it for yourself.
+
+## Dependencies :
+
+Qbox Framework - https://github.com/qbox-project/qbx-core
+
+ox_lib - https://github.com/overextended/ox_lib
+
+ox_inventory - https://github.com/overextended/ox_inventory
+
+ox_target - https://github.com/overextended/ox_target
+
+## Add the following to your server.cfg
+```
+ensure qbx-burgershot
+```
+
+## Insert into @qb-smallresources --> server --> consumables.lua
+```
+RegisterNetEvent('consumables:client:bs_burger', function(item)
+    if lib.progressBar({
+        duration = 5000,
+        label = 'Eating..',
+        useWhileDead = false,
+        canCancel = true,
+        disable = {
+            combat = true,
+        },
+        anim = {
+            dict = 'mp_player_inteat@burger',
+            clip = 'mp_player_int_eat_burger'
+        },
+        prop = {
+            model = `prop_food_bs_burg1`,
+            bone = 18905,
+            pos = vec3(0.13, 0.05, 0.02),
+            rot = vec3(-50.0, 16.0, 60.0)
+        },
+    })then
+        if lib.callback.await("qbx-smallresources:RemoveItem", false, item) then
+            TriggerServerEvent("consumables:server:addHunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + Config.ConsumablesEat[item.name])
+            TriggerServerEvent('hud:server:RelieveStress', math.random(10, 20))
+        end
+    else
+        QBCore.Functions.Notify("Cancelled", "error")
+    end
+end)
+
+RegisterNetEvent('consumables:client:bs_fries', function(item)
+    if lib.progressBar({
+        duration = 5000,
+        label = 'Eating..',
+        useWhileDead = false,
+        canCancel = true,
+        disable = {
+            combat = true,
+        },
+        anim = {
+            dict = 'mp_player_inteat@burger',
+            clip = 'mp_player_int_eat_burger'
+        },
+        prop = {
+            model = `prop_food_bs_chips`,
+            bone = 18905,
+            pos = vec3(0.13, 0.05, 0.02),
+            rot = vec3(-50.0, 16.0, 60.0)
+        },
+    })then
+        if lib.callback.await("qbx-smallresources:RemoveItem", false, item) then
+             TriggerServerEvent("consumables:server:addHunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + Config.ConsumablesEat[item.name])
+            TriggerServerEvent('hud:server:RelieveStress', math.random(5, 10))
+        end
+    else
+        QBCore.Functions.Notify("Cancelled", "error")
+    end
+end)
+
+RegisterNetEvent('consumables:client:bs_Drink', function(item)
+    if lib.progressBar({
+        duration = 5000,
+        label = 'Drinking..',
+        useWhileDead = false,
+        canCancel = true,
+        disable = {
+            combat = true,
+        },
+        anim = {
+            dict = 'amb@world_human_drinking@coffee@male@idle_a',
+            clip = 'idle_c'
+        },
+        prop = {
+            model = `prop_cs_bs_cup`,
+            bone = 28422,
+            pos = vec3(0.0, 0.0, 0.0,),
+            rot = vec3(0.0, 0.0, 0.0)
+        },
+    })then
+       if lib.callback.await("qbx-smallresources:RemoveItem", false, item) then
+            TriggerServerEvent("consumables:server:addThirst", QBCore.Functions.GetPlayerData().metadata["thirst"] + Config.ConsumablesDrink[item.name])
+            TriggerServerEvent('hud:server:RelieveStress', math.random(20, 45))
+        end
+    else
+        QBCore.Functions.Notify("Cancelled", "error")
+    end
+end)
+```
+
+## Insert into @qb-smallresources --> server --> consumables.lua
+```
+--Burgershot
+QBCore.Functions.CreateUseableItem("fries", function(source, item)
+    local LocalPlayer = Player(source).state
+	if not LocalPlayer.invBusy then
+        TriggerClientEvent("consumables:client:bs_fries", source, item)
+    end
+end)
+
+QBCore.Functions.CreateUseableItem("bleeder", function(source, item)
+    local LocalPlayer = Player(source).state
+	if not LocalPlayer.invBusy then
+        TriggerClientEvent("consumables:client:bs_burger", source, item)
+    end
+end)
+
+QBCore.Functions.CreateUseableItem("moneyshot", function(source, item)
+    local LocalPlayer = Player(source).state
+	if not LocalPlayer.invBusy then
+        TriggerClientEvent("consumables:client:bs_burger", source, item)
+    end
+end)
+
+QBCore.Functions.CreateUseableItem("torpedo", function(source, item)
+    local LocalPlayer = Player(source).state
+	if not LocalPlayer.invBusy then
+        TriggerClientEvent("consumables:client:bs_burger", source, item)
+    end
+end)
+
+QBCore.Functions.CreateUseableItem("burger", function(source, item)
+    local LocalPlayer = Player(source).state
+	if not LocalPlayer.invBusy then
+        TriggerClientEvent("consumables:client:bs_burger", source, item)
+    end
+end)
+
+QBCore.Functions.CreateUseableItem("heartstopper", function(source, item)
+    local LocalPlayer = Player(source).state
+	if not LocalPlayer.invBusy then
+        TriggerClientEvent("consumables:client:bs_burger", source, item)
+    end
+end)
+
+QBCore.Functions.CreateUseableItem("meatfree", function(source, item)
+    local LocalPlayer = Player(source).state
+	if not LocalPlayer.invBusy then
+        TriggerClientEvent("consumables:client:bs_burger", source, item)
+    end
+end)
+
+QBCore.Functions.CreateUseableItem("meatshake", function(source, item)
+    local LocalPlayer = Player(source).state
+	if not LocalPlayer.invBusy then
+        TriggerClientEvent("consumables:client:bs_Drink", source, item)
+    end
+end)
+
+QBCore.Functions.CreateUseableItem("milkshake", function(source, item)
+    local LocalPlayer = Player(source).state
+	if not LocalPlayer.invBusy then
+        TriggerClientEvent("consumables:client:bs_Drink", source, item)
+    end
+end)
+```
+
+## Insert into @qb-smallresources --> config.lua
+```
+ConsumablesEat = {
+    ["burger"] = math.random(20, 40),
+    ["bleeder"] = math.random(35, 50),
+    ["moneyshot"] = math.random(35, 45),
+    ["torpedo"] = math.random(35, 50),
+    ["heartstopper"] = math.random(100, 150),
+    ["meatfree"] = math.random(25, 50),
+    ["fries"] = math.random(10, 20),
+}
+
+ConsumablesDrink  = {
+    ["meatshake"] = math.random(35, 60),
+    ["milkshake"] = math.random(40, 75),
+}
+```
+
+## Insert into ox_inventory/data/items.lua
+
+Add the pictures of the image folder to ox_inventory/web/images
+
+```
+['toy2'] = {
+		label = 'Ours Rose',
+		weight = 50,
+		stack = false,
+		close = false,
+		description = "A Fluffy Pink Teddy from the Atic"
+	},
+
+	['toy1'] = {
+		label = 'Figurinne',
+		weight = 50,
+		stack = false,
+		close = false,
+		description = "An Action Figure From the late 90's"
+	},
+
+	['burger'] = {
+		label = 'Burger',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "A regular burger for boring people."
+	},
+
+	['murdermeal'] = {
+		label = 'Murder Meal',
+		weight = 50,
+		stack = true,
+		close = true,
+		description = "An Amazing Murder Meal with a chance of a toy."
+	},
+
+	['heartstopper'] = {
+		label = 'Burger Heartstopper',
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Sates Hunger."
+	},
+
+	['torpedo'] = {
+		label = 'Burger Torpedo',
+		weight = 310,
+		stack = true,
+		close = true,
+		description = "Sates Hunger."
+	},
+
+	['milkshake'] = {
+		label = 'Milkshake',
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "Hand-scooped for you!"
+	},
+
+	['moneyshot'] = {
+		label = 'Burger Moneyshot',
+		weight = 300,
+		stack = true,
+		close = true,
+		description = "Sates Hunger."
+	},
+
+	['bleeder'] = {
+		label = 'Burger Bleeder',
+		weight = 250,
+		stack = true,
+		close = true,
+		description = "Sates Hunger."
+	},
+
+	['meatshake'] = {
+		label = 'Meat Shake',
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "Nice'N'Chunky MeatShake remulsified just for you"
+	},
+
+	['meatfree'] = {
+		label = 'Burger Végétarien',
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "Sates Hunger."
+	},
+
+	['fries'] = {
+		label = 'Barquette de Frites',
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "Sates Hunger."
+	},
+
+	['rawmeat'] = {
+		label = 'Steak Cru',
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "An Ingredient"
+	},
+
+	['lettuce'] = {
+		label = 'laitue',
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "An Ingredient"
+	},
+
+	['bun'] = {
+		label = 'Pain à burger',
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "An Ingredient"
+	},
+
+	['steak'] = {
+		label = 'Steak Cuit',
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "An Ingredient"
+	},
+
+	['tomato'] = {
+		label = 'Tomate',
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "An Ingredient"
+	},
+
+	['mshakeformula'] = {
+		label = 'Formule à Milkshake',
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "An Ingredient"
+	},
+
+	['potato'] = {
+		label = 'Sac de Patates',
+		weight = 1500,
+		stack = true,
+		close = true,
+		description = "An Ingredient"
+	},
+```
+
+## Insert into @qbx-core/shared/jobs.lua
+```
+["burgershot"] = {
+	label = "Burgershot Employee",
+	defaultDuty = false,
+    offDutyPay = true,
+	grades = {
+        ['0'] = {
+            name = "Trainee",
+            payment = 50
+        },
+		['1'] = {
+            name = "Employee",
+            payment = 75
+        },
+		['2'] = {
+            name = "Manager",
+            payment = 125
+        },
+		['3'] = {
+            name = "CEO",
+			isboss = true,
+            payment = 150
+        },
+    },
+},
+```
