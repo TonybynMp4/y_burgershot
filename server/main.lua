@@ -53,7 +53,7 @@ local stashes = {
         slots = 5,
         weight = 10000,
         groups = nil,
-        coords = vector3(-1195.29, -892.31, 14.0),
+        coords = Config.coords.tray.coords,
     },
     {
         id = 'burgershot_hotstorage',
@@ -61,7 +61,7 @@ local stashes = {
         slots = 50,
         weight = 75000,
         groups = { ['burgershot'] = 0},
-        coords = vector3(-1197.78, -894.45, 14.0),
+        coords = Config.coords.hotstorage.coords,
     },
     {
         id = 'burgershot_storage',
@@ -69,7 +69,7 @@ local stashes = {
         slots = 20,
         weight = 100000,
         groups = { ['burgershot'] = 0},
-        coords = vector3(-1202.64, -891.77, 14),
+        coords = Config.coords.storage.coords,
     }
 }
 

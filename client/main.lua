@@ -144,9 +144,9 @@ end
 CreateThread(function()
 	exports.ox_target:addBoxZone({
 		name = "BurgerShot_Duty",
-		coords = vec3(-1196.95, -902.45, 14.0),
-		size = vec3(1.5, 0.5, 2),
-		rotation = 33.5,
+		coords = Config.coords.duty.coords,
+		size = Config.coords.duty.size,
+		rotation = Config.coords.duty.rotation,
 		debug = false,
 		options = {
 			{
@@ -165,9 +165,9 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "BurgerShot_Cook",
-		coords = vec3(-1200.54, -900.92, 13.8),
-		size = vec3(1.0, 1.8, 0.8),
-		rotation = 34,
+		coords = Config.coords.cook.coords,
+		size = Config.coords.cook.size,
+		rotation = Config.coords.cook.rotation,
 		debug = false,
 		options = {
 			{
@@ -185,9 +185,9 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "BurgerShot_Cook_2",
-		coords = vec3(-1202.94, -897.38, 14.0),
-		size = vec3(1.0, 1.8, 0.8),
-		rotation = 34,
+		coords = Config.coords.cook_2.coords,
+		size = Config.coords.cook_2.size,
+		rotation = Config.coords.cook_2.rotation,
 		debug = false,
 		options = {
 			{
@@ -205,9 +205,9 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "BurgerShot_Fry",
-		coords = vec3(-1202.01, -899.27, 14.0),
-		size = vec3(1.5, 2.5, 0.8),
-		rotation = 34,
+		coords = Config.coords.fry.coords,
+		size = Config.coords.fry.size,
+		rotation = Config.coords.fry.rotation,
 		debug = false,
 		options = {
 			{
@@ -225,9 +225,9 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "BurgerShot_Burgers_Craft",
-		coords = vec3(-1197.57, -899.41, 14.0),
-		size = vec3(0.7, 1.8, 0.8),
-		rotation = 304,
+		coords = Config.coords.burgers.coords,
+		size = Config.coords.burgers.size,
+		rotation = Config.coords.burgers.rotation,
 		debug = false,
 		options = {
 			{
@@ -243,9 +243,9 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "BurgerShot_Drinks_Craft",
-		coords = vec3(-1199.54, -895.52, 14.0),
-		size = vec3(0.6, 2.2, 1),
-		rotation = 34,
+		coords = Config.coords.drinks.coords,
+		size = Config.coords.drinks.size,
+		rotation = Config.coords.drinks.rotation,
 		debug = false,
 		options = {
 			{
@@ -261,9 +261,9 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "burger_tray",
-		coords = vec3(-1193.87, -894.38, 14.0),
-		size = vec3(1, 1.05, 0.5),
-		rotation = 35,
+		coords = Config.coords.tray.coords,
+		size = Config.coords.tray.size,
+		rotation = Config.coords.tray.rotation,
 		debug = false,
 		options = {
 			{
@@ -281,9 +281,9 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "burgershot_hotstorage",
-		coords = vec3(-1197.78, -894.45, 14.0),
-		size = vec3(1.2, 4.6, 1.8),
-		rotation = 35,
+		coords = Config.coords.hotstorage.coords,
+		size = Config.coords.hotstorage.size,
+		rotation = Config.coords.hotstorage.rotation,
 		debug = false,
 		options = {
 			{
@@ -301,9 +301,9 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "burgershot_storage",
-		coords = vec3(-1202.64, -891.77, 14),
-		size = vec3(1, 3, 1.8),
-		rotation = 35,
+		coords = Config.coords.storage.coords,
+		size = Config.coords.storage.size,
+		rotation = Config.coords.storage.rotation,
 		debug = false,
 		options = {
 			{
