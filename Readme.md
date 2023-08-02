@@ -386,3 +386,52 @@ Add the pictures of the image folder to ox_inventory/web/images
     },
 },
 ```
+
+## Uniqx coords Config
+```
+    duty = {
+        coords = vector3(-1200.5, -902.27, 14.75),
+        size = vector3(2.0, 0.5, 2),
+        rotation = 125,
+    },
+    cook = {
+        coords = vector3(-1195.02, -897.35, 14),
+        size = vector3(0.5, 0.7, 0.8),
+        rotation = 74,
+    },
+    cook_2 = {
+        coords = vector3(-1195.75, -897.15, 14),
+        size = vector3(0.5, 0.75, 0.8),
+        rotation = 74,
+    },
+    fry = {
+        coords = vector3(-1196.08, -900.08, 13.5),
+        size = vector3(0.70, 2.5, 1.5),
+        rotation = 74,
+    },
+    burgers = {
+        coords = vector3(-1195.29, -897.55, 13.80),
+        size = vector3(1, 4.5, 0.2),
+        rotation = 74,
+    },
+    drinks = {
+        coords = vector3(-1191, -898.75, 13.89),
+        size = vector3(0.6, 2.2, 1.5),
+        rotation = 125,
+    },
+    tray = {
+        coords = vector3(-1194.93, -893.3, 14.15),
+        size = vector3(1, 1.05, 0.5),
+        rotation = 165,
+    },
+    hotstorage = {
+        coords = vector3(-1203.08, -896.96, 14.5),
+        size = vector3(1.2, 3, 1.8),
+        rotation = 35,
+    },
+    storage = {
+        coords = vector3(-1196, -901, 13.89),
+        size = vector3(0.75, 3, 1.8),
+        rotation = 75,
+    },
+    ```

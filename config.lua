@@ -1,5 +1,55 @@
 Config = {}
 
+Config.Zonedebug = false
+
+Config.coords = {
+    duty = {
+        coords = vector3(-1196.95, -902.45, 14.0),
+        size = vector3(1.5, 0.5, 2),
+        rotation = 33.5,
+    },
+    cook = {
+        coords = vector3(-1200.54, -900.92, 13.8),
+        size = vector3(1.0, 1.8, 0.8),
+        rotation = 34,
+    },
+    cook_2 = {
+        coords = vector3(-1202.94, -897.38, 14.0),
+        size = vector3(1.0, 1.8, 0.8),
+        rotation = 34,
+    },
+    fry = {
+        coords = vector3(-1202.01, -899.27, 14.0),
+        size = vector3(1.5, 2.5, 0.8),
+        rotation = 34,
+    },
+    burgers = {
+        coords = vector3(-1197.57, -899.41, 14.0),
+        size = vector3(0.7, 1.8, 0.8),
+        rotation = 304,
+    },
+    drinks = {
+        coords = vector3(-1199.54, -895.52, 14.0),
+        size = vector3(0.6, 2.2, 1),
+        rotation = 34,
+    },
+    tray = {
+        coords = vector3(-1193.87, -894.38, 14.0),
+        size = vector3(1, 1.05, 0.5),
+        rotation = 35,
+    },
+    hotstorage = {
+        coords = vector3(-1197.78, -894.45, 14.0),
+        size = vector3(1.2, 4.6, 1.8),
+        rotation = 35,
+    },
+    storage = {
+        coords = vector3(-1202.64, -891.77, 14),
+        size = vector3(1, 3, 1.8),
+        rotation = 35,
+    },
+}
+
 Config.IngredientsLabels = {
     ["tomato"] = "Tomates",
     ["mshakeformula"] = "Formule à Milkshake",
