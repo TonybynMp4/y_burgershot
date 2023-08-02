@@ -147,7 +147,7 @@ CreateThread(function()
 		coords = Config.coords.duty.coords,
 		size = Config.coords.duty.size,
 		rotation = Config.coords.duty.rotation,
-		debug = false,
+		debug = Config.Zonedebug,
 		options = {
 			{
 				type = "client",
@@ -168,7 +168,7 @@ CreateThread(function()
 		coords = Config.coords.cook.coords,
 		size = Config.coords.cook.size,
 		rotation = Config.coords.cook.rotation,
-		debug = false,
+		debug = Config.Zonedebug,
 		options = {
 			{
 				type = "client",
@@ -188,7 +188,7 @@ CreateThread(function()
 		coords = Config.coords.cook_2.coords,
 		size = Config.coords.cook_2.size,
 		rotation = Config.coords.cook_2.rotation,
-		debug = false,
+		debug = Config.Zonedebug,
 		options = {
 			{
 				type = "client",
@@ -208,7 +208,7 @@ CreateThread(function()
 		coords = Config.coords.fry.coords,
 		size = Config.coords.fry.size,
 		rotation = Config.coords.fry.rotation,
-		debug = false,
+		debug = Config.Zonedebug,
 		options = {
 			{
 				type = "client",
@@ -228,7 +228,7 @@ CreateThread(function()
 		coords = Config.coords.burgers.coords,
 		size = Config.coords.burgers.size,
 		rotation = Config.coords.burgers.rotation,
-		debug = false,
+		debug = Config.Zonedebug,
 		options = {
 			{
 				type = "client",
@@ -246,7 +246,7 @@ CreateThread(function()
 		coords = Config.coords.drinks.coords,
 		size = Config.coords.drinks.size,
 		rotation = Config.coords.drinks.rotation,
-		debug = false,
+		debug = Config.Zonedebug,
 		options = {
 			{
 				type = "client",
@@ -264,7 +264,7 @@ CreateThread(function()
 		coords = Config.coords.tray.coords,
 		size = Config.coords.tray.size,
 		rotation = Config.coords.tray.rotation,
-		debug = false,
+		debug = Config.Zonedebug,
 		options = {
 			{
 				type = "client",
@@ -284,7 +284,7 @@ CreateThread(function()
 		coords = Config.coords.hotstorage.coords,
 		size = Config.coords.hotstorage.size,
 		rotation = Config.coords.hotstorage.rotation,
-		debug = false,
+		debug = Config.Zonedebug,
 		options = {
 			{
 				type = "client",
@@ -304,7 +304,7 @@ CreateThread(function()
 		coords = Config.coords.storage.coords,
 		size = Config.coords.storage.size,
 		rotation = Config.coords.storage.rotation,
-		debug = false,
+		debug = Config.Zonedebug,
 		options = {
 			{
 				type = "client",
