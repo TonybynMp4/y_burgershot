@@ -359,6 +359,15 @@ Add the pictures of the image folder to ox_inventory/web/images
 	},
 ```
 
+## Insert into ox_inventory/modules/items/containers.lua
+```
+setContainerProperties('murdermeal', {
+	slots = 4,
+	maxWeight = 2500,
+	whitelist = { "bleeder", "meatshake", "fries", "toy1", "toy2" }
+})
+```
+
 ## Insert into @qbx-core/shared/jobs.lua
 ```
 ["burgershot"] = {
