@@ -5,6 +5,12 @@ Obtaining the ingredients can be done by using an ox_inventory shop, but you can
 
 I don't provide a location for qbx-management, i'll let you do it for yourself.
 
+Compatible with two MLOs "out of the box" (default uniqx, Smallo's config is a bit further down in this readme)
+
+Smallo: https://www.gta5-mods.com/maps/gtaiv-burgershot-interior-sp-and-fivem
+
+Uniqx: https://www.gta5-mods.com/maps/mlo-burgershot-2023-add-on-sp-fivem
+
 ## Dependencies :
 
 Qbox Framework - https://github.com/qbox-project/qbx-core
