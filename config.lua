@@ -1,5 +1,7 @@
 Config = {}
 
+Config.Zonedebug = false
+
 Config.coords = {
     duty = {
         coords = vector3(-1196.95, -902.45, 14.0),
