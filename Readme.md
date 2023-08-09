@@ -362,13 +362,20 @@ Add the pictures of the image folder to ox_inventory/web/images
 Optionnal:
 If you want to make the raw meat a eat-able thing i guess :) (thanks to PrinceAlbert (discord @noornahas))
 ```
-client = {
-            status = { hunger = -200000 },
-            anim = 'eating',
-            prop = 'burger',
-            usetime = 2500,
-            notification = 'You ate raw meat! GROSS!'
-        },
+['rawmeat'] = {
+    label = 'Steak Cru',
+    weight = 125,
+    stack = true,
+    close = true,
+    description = "An Ingredient"
+    client = {
+        status = { hunger = -200000 },
+        anim = 'eating',
+        prop = 'burger',
+        usetime = 2500,
+        notification = 'You ate raw meat! GROSS!'
+    },
+},
 ```
 
 ## Insert into ox_inventory/modules/items/containers.lua
