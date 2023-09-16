@@ -7,7 +7,7 @@ end)
 local function getDescription(ingredients)
 	local desc = ""
 	for _, v in pairs(ingredients) do
-		desc = desc .. Config.IngredientsLabels[v.item] .. " x" .. v.amount .. " | "
+		desc = desc .. Config.IngredientsLabels?[v.item] or v.item .. " x" .. v?.amount or 1 .. " | "
 	end
 	desc = string.sub(desc, 1, -4)
 	return desc
