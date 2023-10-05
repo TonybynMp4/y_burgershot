@@ -1,7 +1,7 @@
 local function hasIngredients(source, recipe, recipeType)
     local Recipe = Config.Recipes[recipeType][recipe]
     if not Recipe then
-        print(recipeType, recipe)
+        lib.print.warn("missing recipe or wrong recipeType?", recipeType, recipe)
         return false
     end
     for k, v in pairs(Recipe.ingredients) do
@@ -17,13 +17,13 @@ lib.callback.register('qbx-burgershot:server:hasIngredients', hasIngredients)
 
 RegisterNetEvent('qbx-burgershot:server:CraftMeal', function(recipe, recipeType)
     local source = source
-    local Player = QBCore.Functions.GetPlayer(source)
+    local Player = exports.qbx_core:GetPlayer(source)
     local Recipe = Config.Recipes[recipeType][recipe]
     if not Player then return end
     if not Recipe then return end
 
     if not hasIngredients(source, recipe, recipeType) then
-        return TriggerClientEvent('QBCore:Notify', source, Lang:t('error.missing_ingredients'), 'error')
+        return exports.qbx_core:Notify(source, Lang:t('error.missing_ingredients'), 'error')
     end
 
     for _, v in pairs(Recipe.ingredients) do
@@ -32,7 +32,7 @@ RegisterNetEvent('qbx-burgershot:server:CraftMeal', function(recipe, recipeType)
     if recipe == 'murdermeal' then
         local success, response = exports.ox_inventory:AddItem(source, 'murdermeal', 1)
         if not success then
-            return TriggerClientEvent('QBCore:Notify', source, Lang:t("error.something_went_wrong"), 'error')
+            return exports.qbx_core:Notify(source, Lang:t("error.something_went_wrong"), 'error')
         end
 
         local container = exports.ox_inventory:GetContainerFromSlot(source, response.slot)
@@ -40,9 +40,9 @@ RegisterNetEvent('qbx-burgershot:server:CraftMeal', function(recipe, recipeType)
             exports.ox_inventory:AddItem(container.id, v.item, v.amount)
         end
         exports.ox_inventory:AddItem(container.id, 'toy'..math.random(1,2), 1)
-        return TriggerClientEvent('QBCore:Notify', source, Lang:t('success.crafted', { recipe = Recipe.label }), 'success')
+        return exports.qbx_core:Notify(source, Lang:t('success.crafted', { recipe = Recipe.label }), 'success')
     end
-    TriggerClientEvent('QBCore:Notify', source, Lang:t('success.crafted', { recipe = Recipe.label }), 'success')
+    exports.qbx_core:Notify(source, Lang:t('success.crafted', { recipe = Recipe.label }), 'success')
     exports.ox_inventory:AddItem(source, recipe, 1)
 end)
 
