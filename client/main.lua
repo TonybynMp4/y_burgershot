@@ -1,4 +1,4 @@
-local onDuty = false
+local onDuty = QBX.PlayerData.job.onduty
 
 RegisterNetEvent('QBCore:Client:SetDuty', function(duty)
 	onDuty = duty
@@ -7,7 +7,10 @@ end)
 local function getDescription(ingredients)
 	local desc = ""
 	for _, v in pairs(ingredients) do
-		desc = desc .. Config.IngredientsLabels?[v.item] or v.item .. " x" .. v?.amount or 1 .. " | "
+		if not Config.IngredientsLabels[v.item] then
+			lib.print.warn("Missing ingredient label for: ", v.item)
+		end
+		desc = desc .. (Config.IngredientsLabels?[v.item] or v?.item) .. " x" .. (v?.amount or 1) .. " | "
 	end
 	desc = string.sub(desc, 1, -4)
 	return desc
@@ -15,81 +18,98 @@ end
 
 local function craftPrep(recipe)
 	if not onDuty then
-		return QBCore.Functions.Notify(Lang:t('error.notOnDuty'), "error")
+		return exports.qbx_core:Notify(Lang:t('error.notOnDuty'), "error")
 	end
 
 	local HasIngredients = lib.callback.await('qbx-burgershot:server:hasIngredients', false, recipe, "prep")
 	if not HasIngredients then
-		return QBCore.Functions.Notify(Lang:t("error.missing_ingredients"), 'error', 7500)
+		return exports.qbx_core:Notify(Lang:t("error.missing_ingredients"), 'error', 7500)
 	end
 
-	QBCore.Functions.Progressbar("pickup", Lang:t('progress.cooking'), 4000, false, true, {
-		disableMovement = true,
-		disableCarMovement = false,
-		disableMouse = false,
-		disableCombat = false,
-	}, {
-		animDict = "amb@prop_human_bbq@male@base",
-	    anim = "base",
-	    flags = 8,
-	}, {
-		model = "prop_cs_fork",
-		bone = 28422,
-		coords = vector3(-0.005, 0.00, 0.00),
-		rotation = vector3(175.0, 160.0, 0.0),
-	}, {}, function()
+	if lib.progressBar({
+		duration = 4000,
+		label = Lang:t('progress.cooking'),
+		useWhileDead = false,
+		canCancel = true,
+		disable = {
+			car = true,
+			combat = true,
+			move = true,
+		},
+		anim = {
+			dict = 'amb@prop_human_bbq@male@base',
+			clip = 'base'
+		},
+		prop = {
+			model = `prop_cs_fork`,
+			bone = 28422,
+			pos = vec3(-0.005, 0.00, 0.00),
+			rot = vec3(175.0, 160.0, 0.0)
+		},
+	}) then
 		TriggerServerEvent('qbx-burgershot:server:CraftMeal', recipe, "prep")
-	end, function()
-		QBCore.Functions.Notify('Annulé!', 'error', 7500)
-	end)
+	else
+		exports.qbx_core:Notify(Lang:t('error.cancel'), 'error', 7500)
+	end
 end
 
 local function craftDrink(recipe)
 	if not onDuty then
-		return QBCore.Functions.Notify(Lang:t('error.notOnDuty'), "error")
+		return exports.qbx_core:Notify(Lang:t('error.notOnDuty'), "error")
 	end
 
 	local HasIngredients = lib.callback.await('qbx-burgershot:server:hasIngredients', false, recipe, "drinks")
 	if not HasIngredients then
-		return QBCore.Functions.Notify(Lang:t("error.missing_ingredients"), 'error', 7500)
+		return exports.qbx_core:Notify(Lang:t("error.missing_ingredients"), 'error', 7500)
 	end
 
-	QBCore.Functions.Progressbar("pickup", Lang:t('progress.making_drink'), 4000, false, true, {
-		disableMovement = true,
-		disableCarMovement = false,
-		disableMouse = false,
-		disableCombat = false,
-	}, {}, {}, {}, function()
+	if lib.progressBar({
+		duration = 4000,
+		label = Lang:t('progress.making_drink'),
+		useWhileDead = false,
+		canCancel = true,
+		disable = {
+			car = true,
+			combat = true,
+			move = true,
+		},
+	}) then
 		TriggerServerEvent('qbx-burgershot:server:CraftMeal', recipe, "drinks")
-	end, function()
-		QBCore.Functions.Notify('Annulé!', 'error', 7500)
-	end)
+	else
+		exports.qbx_core:Notify(Lang:t('error.cancel'), 'error', 7500)
+	end
 end
 
 local function craftMeal(recipe)
 	if not onDuty then
-		return QBCore.Functions.Notify(Lang:t('error.notOnDuty'), "error")
+		return exports.qbx_core:Notify(Lang:t('error.notOnDuty'), "error")
 	end
 
 	local HasIngredients = lib.callback.await('qbx-burgershot:server:hasIngredients', false, recipe, 'burgers')
 	if not HasIngredients then
-		return QBCore.Functions.Notify(Lang:t("error.missing_ingredients"), 'error', 7500)
+		return exports.qbx_core:Notify(Lang:t("error.missing_ingredients"), 'error', 7500)
 	end
 
-	QBCore.Functions.Progressbar("pickup_sla", Lang:t('progress.making_burger'), 4000, false, true, {
-		disableMovement = true,
-		disableCarMovement = true,
-		disableMouse = false,
-		disableCombat = true,
-	}, {
-		animDict = "mp_common",
-		anim = "givetake1_a",
-		flags = 8,
-	}, {}, {}, function() -- Done
+
+	if lib.progressBar({
+		duration = 4000,
+		label = Lang:t('progress.making_burger'),
+		useWhileDead = false,
+		canCancel = true,
+		disable = {
+			car = true,
+			combat = true,
+			move = true,
+		},
+		anim = {
+			dict = 'mp_common',
+			clip = 'givetake1_a'
+		},
+	}) then
 		TriggerServerEvent('qbx-burgershot:server:CraftMeal', recipe, 'burgers')
-	end, function()
-		QBCore.Functions.Notify(Lang:t('error.cancel'), "error")
-	end)
+	else
+		exports.qbx_core:Notify(Lang:t('error.cancel'), 'error', 7500)
+	end
 end
 
 local function openDrinksMenu()
@@ -318,14 +338,4 @@ CreateThread(function()
 			}
 		}
 	})
-end)
-
-AddEventHandler('onResourceStart', function(resource)
-	if resource == GetCurrentResourceName() then
-		onDuty = QBCore.Functions.GetPlayerData().job.onduty
-	end
-end)
-
-RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-	onDuty = QBCore.Functions.GetPlayerData().job.onduty
 end)
