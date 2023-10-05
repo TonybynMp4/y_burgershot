@@ -51,20 +51,21 @@ Config.coords = {
 }
 
 Config.IngredientsLabels = {
-    ["tomato"] = "Tomates",
-    ["mshakeformula"] = "Formule à Milkshake",
-    ["water_bottle"] = "Bouteille d'eau",
-    ["co2_bottle"] = "Bouteille de CO2",
-    ["lettuce"] = "Laitue",
-    ["bun"] = "Pain à burger",
+    ["tomato"] = "Tomato",
+    ["mshakeformula"] = "Milkshake Formula",
+    ["water_bottle"] = "Water Bottle",
+    ["co2_bottle"] = "CO2 Bottle",
+    ["lettuce"] = "Lettuce",
+    ["bun"] = "Burger Bun",
     ["steak"] = "Steak",
-    ["fries"] = "Frites",
+    ["fries"] = "Fries",
     ["mshake"] = "Milkshake",
     ["meatshake"] = "MeatShake",
-    ["meatfree"] = "Burger Végétarien",
+    ["meatfree"] = "Vegie Burger",
+    ["bleeder"] = "Bleeder",
     ["burger"] = "Burger",
     ["torpedo"] = "Torpedo",
-    ["heartstopper"] = "HeartStopper"
+    ["heartstopper"] = "HeartStopper",
 }
 
 Config.Recipes = {
@@ -79,7 +80,7 @@ Config.Recipes = {
             }
         },
         fries = {
-            label = "Barquette de frites",
+            label = "Fries",
             ingredients = {
                 {
                     item = "potato",
