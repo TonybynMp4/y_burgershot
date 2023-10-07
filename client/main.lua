@@ -1,4 +1,4 @@
-local onDuty = QBX.PlayerData.job.onduty
+local onDuty = QBX?.PlayerData?.job?.onduty
 
 RegisterNetEvent('QBCore:Client:SetDuty', function(duty)
 	onDuty = duty
@@ -338,4 +338,8 @@ CreateThread(function()
 			}
 		}
 	})
+end)
+
+AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
+	onDuty = QBX?.PlayerData?.job?.onduty
 end)
