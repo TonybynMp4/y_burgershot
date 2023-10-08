@@ -49,11 +49,11 @@ RegisterNetEvent('consumables:client:bs_burger', function(item)
         },
     })then
         if lib.callback.await("qbx-smallresources:RemoveItem", false, item) then
-            TriggerServerEvent("consumables:server:addHunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + Config.ConsumablesEat[item.name])
+            TriggerServerEvent("consumables:server:addHunger", exports.qbx_core:GetPlayerData().metadata["hunger"] + Config.ConsumablesEat[item.name])
             TriggerServerEvent('hud:server:RelieveStress', math.random(10, 20))
         end
     else
-        QBCore.Functions.Notify("Cancelled", "error")
+        exports.qbx_core:Notify("Cancelled", "error")
     end
 end)
 
@@ -78,11 +78,11 @@ RegisterNetEvent('consumables:client:bs_fries', function(item)
         },
     })then
         if lib.callback.await("qbx-smallresources:RemoveItem", false, item) then
-             TriggerServerEvent("consumables:server:addHunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + Config.ConsumablesEat[item.name])
+             TriggerServerEvent("consumables:server:addHunger", exports.qbx_core:GetPlayerData().metadata["hunger"] + Config.ConsumablesEat[item.name])
             TriggerServerEvent('hud:server:RelieveStress', math.random(5, 10))
         end
     else
-        QBCore.Functions.Notify("Cancelled", "error")
+        exports.qbx_core:Notify("Cancelled", "error")
     end
 end)
 
@@ -107,11 +107,11 @@ RegisterNetEvent('consumables:client:bs_Drink', function(item)
         },
     })then
        if lib.callback.await("qbx-smallresources:RemoveItem", false, item) then
-            TriggerServerEvent("consumables:server:addThirst", QBCore.Functions.GetPlayerData().metadata["thirst"] + Config.ConsumablesDrink[item.name])
+            TriggerServerEvent("consumables:server:addThirst", exports.qbx_core:GetPlayerData().metadata["thirst"] + Config.ConsumablesDrink[item.name])
             TriggerServerEvent('hud:server:RelieveStress', math.random(20, 45))
         end
     else
-        QBCore.Functions.Notify("Cancelled", "error")
+        exports.qbx_core:Notify("Cancelled", "error")
     end
 end)
 ```
@@ -119,63 +119,63 @@ end)
 ## Insert into @qb-smallresources --> server --> consumables.lua
 ```
 --Burgershot
-QBCore.Functions.CreateUseableItem("fries", function(source, item)
+exports.qbx_core:CreateUseableItem("fries", function(source, item)
     local LocalPlayer = Player(source).state
 	if not LocalPlayer.invBusy then
         TriggerClientEvent("consumables:client:bs_fries", source, item)
     end
 end)
 
-QBCore.Functions.CreateUseableItem("bleeder", function(source, item)
+exports.qbx_core:CreateUseableItem("bleeder", function(source, item)
     local LocalPlayer = Player(source).state
 	if not LocalPlayer.invBusy then
         TriggerClientEvent("consumables:client:bs_burger", source, item)
     end
 end)
 
-QBCore.Functions.CreateUseableItem("moneyshot", function(source, item)
+exports.qbx_core:CreateUseableItem("moneyshot", function(source, item)
     local LocalPlayer = Player(source).state
 	if not LocalPlayer.invBusy then
         TriggerClientEvent("consumables:client:bs_burger", source, item)
     end
 end)
 
-QBCore.Functions.CreateUseableItem("torpedo", function(source, item)
+exports.qbx_core:CreateUseableItem("torpedo", function(source, item)
     local LocalPlayer = Player(source).state
 	if not LocalPlayer.invBusy then
         TriggerClientEvent("consumables:client:bs_burger", source, item)
     end
 end)
 
-QBCore.Functions.CreateUseableItem("burger", function(source, item)
+exports.qbx_core:CreateUseableItem("burger", function(source, item)
     local LocalPlayer = Player(source).state
 	if not LocalPlayer.invBusy then
         TriggerClientEvent("consumables:client:bs_burger", source, item)
     end
 end)
 
-QBCore.Functions.CreateUseableItem("heartstopper", function(source, item)
+exports.qbx_core:CreateUseableItem("heartstopper", function(source, item)
     local LocalPlayer = Player(source).state
 	if not LocalPlayer.invBusy then
         TriggerClientEvent("consumables:client:bs_burger", source, item)
     end
 end)
 
-QBCore.Functions.CreateUseableItem("meatfree", function(source, item)
+exports.qbx_core:CreateUseableItem("meatfree", function(source, item)
     local LocalPlayer = Player(source).state
 	if not LocalPlayer.invBusy then
         TriggerClientEvent("consumables:client:bs_burger", source, item)
     end
 end)
 
-QBCore.Functions.CreateUseableItem("meatshake", function(source, item)
+exports.qbx_core:CreateUseableItem("meatshake", function(source, item)
     local LocalPlayer = Player(source).state
 	if not LocalPlayer.invBusy then
         TriggerClientEvent("consumables:client:bs_Drink", source, item)
     end
 end)
 
-QBCore.Functions.CreateUseableItem("milkshake", function(source, item)
+exports.qbx_core:CreateUseableItem("milkshake", function(source, item)
     local LocalPlayer = Player(source).state
 	if not LocalPlayer.invBusy then
         TriggerClientEvent("consumables:client:bs_Drink", source, item)
