@@ -3,7 +3,7 @@ game 'gta5'
 
 author 'Tonybyn_Mp4'
 description 'Burgershot Job for the Qbox framework'
-version '1.1.0'
+version '1.1.2'
 
 shared_scripts {
 	'@qbx_core/shared/locale.lua',
