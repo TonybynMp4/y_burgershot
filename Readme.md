@@ -13,7 +13,7 @@ Uniqx: https://www.gta5-mods.com/maps/mlo-burgershot-2023-add-on-sp-fivem
 
 ## Dependencies :
 
-Qbox Framework - https://github.com/qbox-project/qbx-core
+Qbox Framework - https://github.com/qbox-project/qbx_core
 
 ox_lib - https://github.com/overextended/ox_lib
 
