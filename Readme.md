@@ -26,7 +26,7 @@ ox_target - https://github.com/overextended/ox_target
 ensure qbx-burgershot
 ```
 
-## Insert into @qb-smallresources --> server --> consumables.lua
+## Insert into @qbx_smallresources --> server --> consumables.lua
 ```
 RegisterNetEvent('consumables:client:bs_burger', function(item)
     if lib.progressBar({
@@ -116,7 +116,7 @@ RegisterNetEvent('consumables:client:bs_Drink', function(item)
 end)
 ```
 
-## Insert into @qb-smallresources --> server --> consumables.lua
+## Insert into @qbx_smallresources --> server --> consumables.lua
 ```
 --Burgershot
 exports.qbx_core:CreateUseableItem("fries", function(source, item)
@@ -183,7 +183,7 @@ exports.qbx_core:CreateUseableItem("milkshake", function(source, item)
 end)
 ```
 
-## Insert into @qb-smallresources --> config.lua
+## Insert into @qbx_smallresources --> config.lua
 ```
 ConsumablesEat = {
     ["burger"] = math.random(20, 40),
