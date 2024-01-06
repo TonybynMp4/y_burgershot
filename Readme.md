@@ -23,7 +23,7 @@ ox_target - https://github.com/overextended/ox_target
 
 ## Add the following to your server.cfg
 ```
-ensure qbx-burgershot
+ensure qbx_burgershot
 ```
 
 ## Insert into @qbx_smallresources --> server --> consumables.lua
@@ -360,7 +360,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 ```
 
 Optionnal:
-If you want to make the raw meat a eat-able thing i guess :) (thanks to PrinceAlbert (discord @noornahas))
+If you want to make the raw meat a eat-able thing i guess :) (thanks to PrinceAlbert)
 ```
 ['rawmeat'] = {
     label = 'Steak Cru',

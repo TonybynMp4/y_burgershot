@@ -3,22 +3,21 @@ game 'gta5'
 
 author 'Tonybyn_Mp4'
 description 'Burgershot Job for the Qbox framework'
-version '1.1.2'
+repository 'https://github.com/TonybynMp4/qbx_burgershot'
+version '1.2.0'
 
 shared_scripts {
 	'@qbx_core/shared/locale.lua',
-	'@qbx_core/import.lua',
 	'@ox_lib/init.lua',
     'config.lua',
 	'locales/en.lua',
 	'locales/*.lua'
 }
 
-modules {
-	'qbx_core:client:playerdata'
+client_scripts {
+    '@qbx_core/modules/playerdata.lua',
+    'client/main.lua'
 }
-
-client_script 'client/main.lua'
 
 server_scripts {
 	'@oxmysql/lib/MySQL.lua',

@@ -1,3 +1,5 @@
+lib.versionCheck('TonybynMp4/qbx_burgershot')
+
 local function hasIngredients(source, recipe, recipeType)
     local Recipe = Config.Recipes[recipeType][recipe]
     if not Recipe then
