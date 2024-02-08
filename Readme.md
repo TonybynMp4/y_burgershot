@@ -1,5 +1,7 @@
 # A Burgershot job for the Qbox Framework
 
+Credits to @Zach488 for the images & a few bits of code
+
 You can add / remove items from the config.lua file.
 Obtaining the ingredients can be done by using an ox_inventory shop, but you can do it however you want (like having a farming company that sells these ingredients to the BurgerShot).
 
