@@ -9,7 +9,6 @@ version '1.2.0'
 ox_lib 'locale'
 shared_scripts {
 	'@ox_lib/init.lua',
-    'config.lua',
 }
 
 client_scripts {
@@ -23,7 +22,8 @@ server_scripts {
 }
 
 files {
-    'locales/*.json'
+    'locales/*.json',
+    'config/client.lua'
 }
 
 lua54 'yes'

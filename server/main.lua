@@ -1,7 +1,8 @@
+local sharedConfig = require 'config.shared'
 lib.versionCheck('TonybynMp4/qbx_burgershot')
 
 local function hasIngredients(source, recipe, recipeType)
-    local Recipe = Config.Recipes[recipeType][recipe]
+    local Recipe = sharedConfig.recipes[recipeType][recipe]
     if not Recipe then
         lib.print.warn("missing recipe or wrong recipeType?", recipeType, recipe)
         return false
@@ -19,9 +20,7 @@ lib.callback.register('qbx-burgershot:server:hasIngredients', hasIngredients)
 
 RegisterNetEvent('qbx-burgershot:server:CraftMeal', function(recipe, recipeType)
     local source = source
-    local Player = exports.qbx_core:GetPlayer(source)
-    local Recipe = Config.Recipes[recipeType][recipe]
-    if not Player then return end
+    local Recipe = sharedConfig.recipes[recipeType][recipe]
     if not Recipe then return end
 
     if not hasIngredients(source, recipe, recipeType) then
@@ -55,7 +54,7 @@ local stashes = {
         slots = 5,
         weight = 10000,
         groups = nil,
-        coords = Config.coords.tray.coords,
+        coords = sharedConfig.coords.tray.coords,
     },
     {
         id = 'burgershot_hotstorage',
@@ -63,7 +62,7 @@ local stashes = {
         slots = 50,
         weight = 75000,
         groups = { ['burgershot'] = 0},
-        coords = Config.coords.hotstorage.coords,
+        coords = sharedConfig.coords.hotstorage.coords,
     },
     {
         id = 'burgershot_storage',
@@ -71,7 +70,7 @@ local stashes = {
         slots = 20,
         weight = 100000,
         groups = { ['burgershot'] = 0},
-        coords = Config.coords.storage.coords,
+        coords = sharedConfig.coords.storage.coords,
     }
 }
 
