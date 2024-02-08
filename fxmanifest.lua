@@ -4,7 +4,7 @@ game 'gta5'
 author 'Tonybyn_Mp4'
 description 'Burgershot Job for the Qbox framework'
 repository 'https://github.com/TonybynMp4/qbx_burgershot'
-version '1.3.0'
+version '1.3.1'
 
 ox_lib 'locale'
 shared_scripts {
@@ -23,7 +23,8 @@ server_scripts {
 
 files {
     'locales/*.json',
-    'config/client.lua'
+    'config/client.lua',
+    'config/shared.lua'
 }
 
 lua54 'yes'
