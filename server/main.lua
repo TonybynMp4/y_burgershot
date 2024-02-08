@@ -25,7 +25,7 @@ RegisterNetEvent('qbx-burgershot:server:CraftMeal', function(recipe, recipeType)
     if not Recipe then return end
 
     if not hasIngredients(source, recipe, recipeType) then
-        return exports.qbx_core:Notify(source, Lang:t('error.missing_ingredients'), 'error')
+        return exports.qbx_core:Notify(source, locale('error.missing_ingredients'), 'error')
     end
 
     for _, v in pairs(Recipe.ingredients) do
@@ -34,7 +34,7 @@ RegisterNetEvent('qbx-burgershot:server:CraftMeal', function(recipe, recipeType)
     if recipe == 'murdermeal' then
         local success, response = exports.ox_inventory:AddItem(source, 'murdermeal', 1)
         if not success then
-            return exports.qbx_core:Notify(source, Lang:t("error.something_went_wrong"), 'error')
+            return exports.qbx_core:Notify(source, locale("error.something_went_wrong"), 'error')
         end
 
         local container = exports.ox_inventory:GetContainerFromSlot(source, response.slot)
@@ -42,16 +42,16 @@ RegisterNetEvent('qbx-burgershot:server:CraftMeal', function(recipe, recipeType)
             exports.ox_inventory:AddItem(container.id, v.item, v.amount)
         end
         exports.ox_inventory:AddItem(container.id, 'toy'..math.random(1,2), 1)
-        return exports.qbx_core:Notify(source, Lang:t('success.crafted', { recipe = Recipe.label }), 'success')
+        return exports.qbx_core:Notify(source, locale('success.crafted', Recipe.label), 'success')
     end
-    exports.qbx_core:Notify(source, Lang:t('success.crafted', { recipe = Recipe.label }), 'success')
+    exports.qbx_core:Notify(source, locale('success.crafted', Recipe.label), 'success')
     exports.ox_inventory:AddItem(source, recipe, 1)
 end)
 
 local stashes = {
     {
         id = 'burgershot_tray',
-        label = Lang:t('info.tray'),
+        label = locale('info.tray'),
         slots = 5,
         weight = 10000,
         groups = nil,
@@ -59,7 +59,7 @@ local stashes = {
     },
     {
         id = 'burgershot_hotstorage',
-        label = Lang:t('info.storage'),
+        label = locale('info.storage'),
         slots = 50,
         weight = 75000,
         groups = { ['burgershot'] = 0},
@@ -67,7 +67,7 @@ local stashes = {
     },
     {
         id = 'burgershot_storage',
-        label = Lang:t('info.storage'),
+        label = locale('info.storage'),
         slots = 20,
         weight = 100000,
         groups = { ['burgershot'] = 0},

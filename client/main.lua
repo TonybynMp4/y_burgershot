@@ -18,17 +18,17 @@ end
 
 local function craftPrep(recipe)
 	if not onDuty then
-		return exports.qbx_core:Notify(Lang:t('error.notOnDuty'), "error")
+		return exports.qbx_core:Notify(locale('error.notOnDuty'), "error")
 	end
 
 	local HasIngredients = lib.callback.await('qbx-burgershot:server:hasIngredients', false, recipe, "prep")
 	if not HasIngredients then
-		return exports.qbx_core:Notify(Lang:t("error.missing_ingredients"), 'error', 7500)
+		return exports.qbx_core:Notify(locale("error.missing_ingredients"), 'error', 7500)
 	end
 
 	if lib.progressBar({
 		duration = 4000,
-		label = Lang:t('progress.cooking'),
+		label = locale('progress.cooking'),
 		useWhileDead = false,
 		canCancel = true,
 		disable = {
@@ -49,23 +49,23 @@ local function craftPrep(recipe)
 	}) then
 		TriggerServerEvent('qbx-burgershot:server:CraftMeal', recipe, "prep")
 	else
-		exports.qbx_core:Notify(Lang:t('error.cancel'), 'error', 7500)
+		exports.qbx_core:Notify(locale('error.cancel'), 'error', 7500)
 	end
 end
 
 local function craftDrink(recipe)
 	if not onDuty then
-		return exports.qbx_core:Notify(Lang:t('error.notOnDuty'), "error")
+		return exports.qbx_core:Notify(locale('error.notOnDuty'), "error")
 	end
 
 	local HasIngredients = lib.callback.await('qbx-burgershot:server:hasIngredients', false, recipe, "drinks")
 	if not HasIngredients then
-		return exports.qbx_core:Notify(Lang:t("error.missing_ingredients"), 'error', 7500)
+		return exports.qbx_core:Notify(locale("error.missing_ingredients"), 'error', 7500)
 	end
 
 	if lib.progressBar({
 		duration = 4000,
-		label = Lang:t('progress.making_drink'),
+		label = locale('progress.making_drink'),
 		useWhileDead = false,
 		canCancel = true,
 		disable = {
@@ -76,24 +76,24 @@ local function craftDrink(recipe)
 	}) then
 		TriggerServerEvent('qbx-burgershot:server:CraftMeal', recipe, "drinks")
 	else
-		exports.qbx_core:Notify(Lang:t('error.cancel'), 'error', 7500)
+		exports.qbx_core:Notify(locale('error.cancel'), 'error', 7500)
 	end
 end
 
 local function craftMeal(recipe)
 	if not onDuty then
-		return exports.qbx_core:Notify(Lang:t('error.notOnDuty'), "error")
+		return exports.qbx_core:Notify(locale('error.notOnDuty'), "error")
 	end
 
 	local HasIngredients = lib.callback.await('qbx-burgershot:server:hasIngredients', false, recipe, 'burgers')
 	if not HasIngredients then
-		return exports.qbx_core:Notify(Lang:t("error.missing_ingredients"), 'error', 7500)
+		return exports.qbx_core:Notify(locale("error.missing_ingredients"), 'error', 7500)
 	end
 
 
 	if lib.progressBar({
 		duration = 4000,
-		label = Lang:t('progress.making_burger'),
+		label = locale('progress.making_burger'),
 		useWhileDead = false,
 		canCancel = true,
 		disable = {
@@ -108,7 +108,7 @@ local function craftMeal(recipe)
 	}) then
 		TriggerServerEvent('qbx-burgershot:server:CraftMeal', recipe, 'burgers')
 	else
-		exports.qbx_core:Notify(Lang:t('error.cancel'), 'error', 7500)
+		exports.qbx_core:Notify(locale('error.cancel'), 'error', 7500)
 	end
 end
 
@@ -131,7 +131,7 @@ local function openDrinksMenu()
 
 	lib.registerContext({
 		id = 'BurgerShot_CraftMenu',
-		title = Lang:t('menus.drinks_title'),
+		title = locale('menus.drinks_title'),
 		options = options,
 	})
 	lib.showContext('BurgerShot_CraftMenu')
@@ -155,7 +155,7 @@ local function openBurgerMenu()
 
 	lib.registerContext({
 		id = 'BurgerShot_CraftMenu',
-		title = Lang:t('menus.burger_title'),
+		title = locale('menus.burger_title'),
 		options = options,
 	})
 	lib.showContext('BurgerShot_CraftMenu')
@@ -176,7 +176,7 @@ CreateThread(function()
 					TriggerServerEvent("QBCore:ToggleDuty")
 				end,
 				icon = "fa fa-clipboard",
-				label = Lang:t('info.duty'),
+				label = locale('info.duty'),
 				distance = 3.0,
 				groups = "burgershot",
 			}
@@ -196,7 +196,7 @@ CreateThread(function()
 					craftPrep("steak")
 				end,
 				icon = "fa fa-hamburger",
-				label = Lang:t('info.burger_cook'),
+				label = locale('info.burger_cook'),
 				distance = 1.5,
 				groups = "burgershot",
 			}
@@ -216,7 +216,7 @@ CreateThread(function()
 					craftPrep("steak")
 				end,
 				icon = "fa fa-hamburger",
-				label = Lang:t('info.burger_cook'),
+				label = locale('info.burger_cook'),
 				distance = 1.5,
 				groups = "burgershot",
 			}
@@ -236,7 +236,7 @@ CreateThread(function()
 					craftPrep("fries")
 				end,
 				icon = "fa fa-hamburger",
-				label = Lang:t('info.fries_cook'),
+				label = locale('info.fries_cook'),
 				distance = 1.5,
 				groups = "burgershot",
 			}
@@ -254,7 +254,7 @@ CreateThread(function()
 				type = "client",
 				onSelect = openBurgerMenu,
 				icon = "fa fa-utensils",
-				label = Lang:t('info.craft'),
+				label = locale('info.craft'),
 				distance = 1.5,
 				groups = "burgershot",
 			}
@@ -272,7 +272,7 @@ CreateThread(function()
 				type = "client",
 				onSelect = openDrinksMenu,
 				icon = "fa fa-utensils",
-				label = Lang:t('info.craft'),
+				label = locale('info.craft'),
 				distance = 1.5,
 				groups = "burgershot",
 			}
@@ -292,7 +292,7 @@ CreateThread(function()
 					exports.ox_inventory:openInventory('stash', 'burgershot_tray')
 				end,
 				icon = "fa fa-clipboard",
-				label = Lang:t('info.tray'),
+				label = locale('info.tray'),
 				distance = 1.5,
 				groups = "burgershot",
 			}
@@ -312,7 +312,7 @@ CreateThread(function()
 					exports.ox_inventory:openInventory('stash', 'burgershot_hotstorage')
 				end,
 				icon = "fa fa-box",
-				label = Lang:t('info.storage'),
+				label = locale('info.storage'),
 				distance = 1.5,
 				groups = "burgershot",
 			}
@@ -332,7 +332,7 @@ CreateThread(function()
 					exports.ox_inventory:openInventory('stash', 'burgershot_storage')
 				end,
 				icon = "fa fa-box",
-				label = Lang:t('info.storage'),
+				label = locale('info.storage'),
 				distance = 2,
 				groups = "burgershot",
 			}
