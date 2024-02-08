@@ -1,4 +1,6 @@
 local onDuty = QBX?.PlayerData?.job?.onduty
+local config = require 'config.client'
+local sharedConfig = require 'config.shared'
 
 RegisterNetEvent('QBCore:Client:SetDuty', function(duty)
 	onDuty = duty
@@ -7,10 +9,10 @@ end)
 local function getDescription(ingredients)
 	local desc = ""
 	for _, v in pairs(ingredients) do
-		if not Config.IngredientsLabels[v.item] then
+		if not config.ingredientsLabels[v.item] then
 			lib.print.warn("Missing ingredient label for: ", v.item)
 		end
-		desc = desc .. (Config.IngredientsLabels?[v.item] or v?.item) .. " x" .. (v?.amount or 1) .. " | "
+		desc = desc .. (config.ingredientsLabels?[v.item] or v?.item) .. " x" .. (v?.amount or 1) .. " | "
 	end
 	desc = string.sub(desc, 1, -4)
 	return desc
@@ -113,7 +115,7 @@ local function craftMeal(recipe)
 end
 
 local function openDrinksMenu()
-	local Recipes = Config.Recipes.drinks
+	local Recipes = sharedConfig.recipes.drinks
 	-- ox_lib menu that has all the recipes and triggers the craft function
 	local options = {}
 
@@ -138,7 +140,7 @@ local function openDrinksMenu()
 end
 
 local function openBurgerMenu()
-	local Recipes = Config.Recipes.burgers
+	local Recipes = sharedConfig.recipes.burgers
 	local options = {}
 
 	for k, v in pairs(Recipes) do
@@ -164,10 +166,10 @@ end
 CreateThread(function()
 	exports.ox_target:addBoxZone({
 		name = "BurgerShot_Duty",
-		coords = Config.coords.duty.coords,
-		size = Config.coords.duty.size,
-		rotation = Config.coords.duty.rotation,
-		debug = Config.Zonedebug,
+		coords = sharedConfig.coords.duty.coords,
+		size = sharedConfig.coords.duty.size,
+		rotation = sharedConfig.coords.duty.rotation,
+		debug = config.zoneDebug,
 		options = {
 			{
 				type = "client",
@@ -185,10 +187,10 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "BurgerShot_Cook",
-		coords = Config.coords.cook.coords,
-		size = Config.coords.cook.size,
-		rotation = Config.coords.cook.rotation,
-		debug = Config.Zonedebug,
+		coords = sharedConfig.coords.cook.coords,
+		size = sharedConfig.coords.cook.size,
+		rotation = sharedConfig.coords.cook.rotation,
+		debug = config.zoneDebug,
 		options = {
 			{
 				type = "client",
@@ -205,10 +207,10 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "BurgerShot_Cook_2",
-		coords = Config.coords.cook_2.coords,
-		size = Config.coords.cook_2.size,
-		rotation = Config.coords.cook_2.rotation,
-		debug = Config.Zonedebug,
+		coords = sharedConfig.coords.cook_2.coords,
+		size = sharedConfig.coords.cook_2.size,
+		rotation = sharedConfig.coords.cook_2.rotation,
+		debug = config.zoneDebug,
 		options = {
 			{
 				type = "client",
@@ -225,10 +227,10 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "BurgerShot_Fry",
-		coords = Config.coords.fry.coords,
-		size = Config.coords.fry.size,
-		rotation = Config.coords.fry.rotation,
-		debug = Config.Zonedebug,
+		coords = sharedConfig.coords.fry.coords,
+		size = sharedConfig.coords.fry.size,
+		rotation = sharedConfig.coords.fry.rotation,
+		debug = config.zoneDebug,
 		options = {
 			{
 				type = "client",
@@ -245,10 +247,10 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "BurgerShot_Burgers_Craft",
-		coords = Config.coords.burgers.coords,
-		size = Config.coords.burgers.size,
-		rotation = Config.coords.burgers.rotation,
-		debug = Config.Zonedebug,
+		coords = sharedConfig.coords.burgers.coords,
+		size = sharedConfig.coords.burgers.size,
+		rotation = sharedConfig.coords.burgers.rotation,
+		debug = config.zoneDebug,
 		options = {
 			{
 				type = "client",
@@ -263,10 +265,10 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "BurgerShot_Drinks_Craft",
-		coords = Config.coords.drinks.coords,
-		size = Config.coords.drinks.size,
-		rotation = Config.coords.drinks.rotation,
-		debug = Config.Zonedebug,
+		coords = sharedConfig.coords.drinks.coords,
+		size = sharedConfig.coords.drinks.size,
+		rotation = sharedConfig.coords.drinks.rotation,
+		debug = config.zoneDebug,
 		options = {
 			{
 				type = "client",
@@ -281,10 +283,10 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "burger_tray",
-		coords = Config.coords.tray.coords,
-		size = Config.coords.tray.size,
-		rotation = Config.coords.tray.rotation,
-		debug = Config.Zonedebug,
+		coords = sharedConfig.coords.tray.coords,
+		size = sharedConfig.coords.tray.size,
+		rotation = sharedConfig.coords.tray.rotation,
+		debug = config.zoneDebug,
 		options = {
 			{
 				type = "client",
@@ -301,10 +303,10 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "burgershot_hotstorage",
-		coords = Config.coords.hotstorage.coords,
-		size = Config.coords.hotstorage.size,
-		rotation = Config.coords.hotstorage.rotation,
-		debug = Config.Zonedebug,
+		coords = sharedConfig.coords.hotstorage.coords,
+		size = sharedConfig.coords.hotstorage.size,
+		rotation = sharedConfig.coords.hotstorage.rotation,
+		debug = config.zoneDebug,
 		options = {
 			{
 				type = "client",
@@ -321,10 +323,10 @@ CreateThread(function()
 
 	exports.ox_target:addBoxZone({
 		name = "burgershot_storage",
-		coords = Config.coords.storage.coords,
-		size = Config.coords.storage.size,
-		rotation = Config.coords.storage.rotation,
-		debug = Config.Zonedebug,
+		coords = sharedConfig.coords.storage.coords,
+		size = sharedConfig.coords.storage.size,
+		rotation = sharedConfig.coords.storage.rotation,
+		debug = config.zoneDebug,
 		options = {
 			{
 				type = "client",
