@@ -4,7 +4,7 @@ game 'gta5'
 author 'Tonybyn_Mp4'
 description 'Burgershot Job for the Qbox framework'
 repository 'https://github.com/TonybynMp4/qbx_burgershot'
-version '1.3.1'
+version '1.3.2'
 
 ox_lib 'locale'
 shared_scripts {
