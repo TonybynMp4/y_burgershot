@@ -36,7 +36,7 @@ ensure qbx_burgershot
         prop = {
             model = `prop_cs_bs_cup`,
             bone = 28422,
-            pos = vec3(0.0, 0.0, 0.0,),
+            pos = vec3(0.0, 0.0, 0.0),
             rot = vec3(0.0, 0.0, 0.0)
         },
         anim = {
@@ -50,7 +50,7 @@ ensure qbx_burgershot
         prop = {
             model = `prop_cs_bs_cup`,
             bone = 28422,
-            pos = vec3(0.0, 0.0, 0.0,),
+            pos = vec3(0.0, 0.0, 0.0),
             rot = vec3(0.0, 0.0, 0.0)
         },
         anim = {
@@ -69,7 +69,7 @@ ensure qbx_burgershot
             bone = 18905,
             pos = vec3(0.13, 0.05, 0.02),
             rot = vec3(-50.0, 16.0, 60.0),
-            model = "prop_food_bs_chips"
+            model = 'prop_food_bs_chips'
         },
         anim = {
             dict = 'mp_player_inteat@burger',
@@ -171,7 +171,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 50,
 		stack = false,
 		close = false,
-		description = "A Fluffy Pink Teddy from the Atic"
+		description = 'A Fluffy Pink Teddy from the Atic'
 	},
 
 	['toy1'] = {
@@ -179,7 +179,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 50,
 		stack = false,
 		close = false,
-		description = "An Action Figure From the late 90's"
+		description = 'An Action Figure From the late 90's'
 	},
 
 	['burger'] = {
@@ -187,7 +187,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 100,
 		stack = true,
 		close = true,
-		description = "A regular burger for boring people."
+		description = 'A regular burger for boring people.'
 	},
 
 	['murdermeal'] = {
@@ -195,7 +195,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 50,
 		stack = true,
 		close = true,
-		description = "An Amazing Murder Meal with a chance of a toy."
+		description = 'An Amazing Murder Meal with a chance of a toy.'
 	},
 
 	['heartstopper'] = {
@@ -203,7 +203,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 500,
 		stack = true,
 		close = true,
-		description = "Sates Hunger."
+		description = 'Sates Hunger.'
 	},
 
 	['torpedo'] = {
@@ -211,7 +211,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 310,
 		stack = true,
 		close = true,
-		description = "Sates Hunger."
+		description = 'Sates Hunger.'
 	},
 
 	['milkshake'] = {
@@ -219,7 +219,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 125,
 		stack = true,
 		close = true,
-		description = "Hand-scooped for you!"
+		description = 'Hand-scooped for you!'
 	},
 
 	['moneyshot'] = {
@@ -227,7 +227,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 300,
 		stack = true,
 		close = true,
-		description = "Sates Hunger."
+		description = 'Sates Hunger.'
 	},
 
 	['bleeder'] = {
@@ -235,7 +235,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 250,
 		stack = true,
 		close = true,
-		description = "Sates Hunger."
+		description = 'Sates Hunger.'
 	},
 
 	['meatshake'] = {
@@ -243,7 +243,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 125,
 		stack = true,
 		close = true,
-		description = "Nice'N'Chunky MeatShake remulsified just for you"
+		description = 'Nice'N'Chunky MeatShake remulsified just for you'
 	},
 
 	['meatfree'] = {
@@ -251,7 +251,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 125,
 		stack = true,
 		close = true,
-		description = "Sates Hunger."
+		description = 'Sates Hunger.'
 	},
 
 	['fries'] = {
@@ -259,7 +259,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 125,
 		stack = true,
 		close = true,
-		description = "Sates Hunger."
+		description = 'Sates Hunger.'
 	},
 
 	['rawmeat'] = {
@@ -267,7 +267,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 125,
 		stack = true,
 		close = true,
-		description = "An Ingredient"
+		description = 'An Ingredient'
 	},
 
 	['lettuce'] = {
@@ -275,7 +275,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 125,
 		stack = true,
 		close = true,
-		description = "An Ingredient"
+		description = 'An Ingredient'
 	},
 
 	['bun'] = {
@@ -283,7 +283,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 125,
 		stack = true,
 		close = true,
-		description = "An Ingredient"
+		description = 'An Ingredient'
 	},
 
 	['steak'] = {
@@ -291,7 +291,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 125,
 		stack = true,
 		close = true,
-		description = "An Ingredient"
+		description = 'An Ingredient'
 	},
 
 	['tomato'] = {
@@ -299,7 +299,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 125,
 		stack = true,
 		close = true,
-		description = "An Ingredient"
+		description = 'An Ingredient'
 	},
 
 	['mshakeformula'] = {
@@ -307,7 +307,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 125,
 		stack = true,
 		close = true,
-		description = "An Ingredient"
+		description = 'An Ingredient'
 	},
 
 	['potato'] = {
@@ -315,7 +315,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 1500,
 		stack = true,
 		close = true,
-		description = "An Ingredient"
+		description = 'An Ingredient'
 	},
 ```
 
@@ -327,7 +327,7 @@ If you want to make the raw meat a eat-able thing i guess :) (thanks to PrinceAl
     weight = 125,
     stack = true,
     close = true,
-    description = "An Ingredient"
+    description = 'An Ingredient'
     client = {
         status = { hunger = -200000 },
         anim = 'eating',
@@ -343,31 +343,31 @@ If you want to make the raw meat a eat-able thing i guess :) (thanks to PrinceAl
 setContainerProperties('murdermeal', {
 	slots = 4,
 	maxWeight = 2500,
-	whitelist = { "bleeder", "meatshake", "fries", "toy1", "toy2" }
+	whitelist = { 'bleeder', 'meatshake', 'fries', 'toy1', 'toy2' }
 })
 ```
 
 ## Insert into @qbx-core/shared/jobs.lua
 ```lua
-["burgershot"] = {
-	label = "Burgershot Employee",
+['burgershot'] = {
+	label = 'Burgershot Employee',
 	defaultDuty = false,
     offDutyPay = true,
 	grades = {
-        {
-            name = "Trainee",
+        [0] = {
+            name = 'Trainee',
             payment = 50
         },
-		{
-            name = "Employee",
+		[1] = {
+            name = 'Employee',
             payment = 75
         },
-		{
-            name = "Manager",
+		[2] = {
+            name = 'Manager',
             payment = 125
         },
-		{
-            name = "CEO",
+		[3] = {
+            name = 'CEO',
 			isboss = true,
             payment = 150
         },
