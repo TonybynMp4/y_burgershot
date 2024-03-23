@@ -5,7 +5,7 @@ Credits to @Zach488 for the images & a few bits of code
 You can add / remove items from the config.lua file.
 Obtaining the ingredients can be done by using an ox_inventory shop, but you can do it however you want (like having a farming company that sells these ingredients to the BurgerShot).
 
-I don't provide a location for qbx-management, i'll let you do it for yourself.
+I don't provide a location for qbx_management, i'll let you do it for yourself.
 
 Compatible with two MLOs "out of the box" (default uniqx, Smallo's config is a bit further down in this readme)
 
@@ -28,188 +28,146 @@ ox_target - https://github.com/overextended/ox_target
 ensure qbx_burgershot
 ```
 
-## Insert into @qbx_smallresources --> server --> consumables.lua
-```
-RegisterNetEvent('consumables:client:bs_burger', function(item)
-    if lib.progressBar({
-        duration = 5000,
-        label = 'Eating..',
-        useWhileDead = false,
-        canCancel = true,
-        disable = {
-            combat = true,
-        },
-        anim = {
-            dict = 'mp_player_inteat@burger',
-            clip = 'mp_player_int_eat_burger'
-        },
-        prop = {
-            model = `prop_food_bs_burg1`,
-            bone = 18905,
-            pos = vec3(0.13, 0.05, 0.02),
-            rot = vec3(-50.0, 16.0, 60.0)
-        },
-    })then
-        if lib.callback.await("qbx-smallresources:RemoveItem", false, item) then
-            TriggerServerEvent("consumables:server:addHunger", exports.qbx_core:GetPlayerData().metadata["hunger"] + Config.ConsumablesEat[item.name])
-            TriggerServerEvent('hud:server:RelieveStress', math.random(10, 20))
-        end
-    else
-        exports.qbx_core:Notify("Cancelled", "error")
-    end
-end)
-
-RegisterNetEvent('consumables:client:bs_fries', function(item)
-    if lib.progressBar({
-        duration = 5000,
-        label = 'Eating..',
-        useWhileDead = false,
-        canCancel = true,
-        disable = {
-            combat = true,
-        },
-        anim = {
-            dict = 'mp_player_inteat@burger',
-            clip = 'mp_player_int_eat_burger'
-        },
-        prop = {
-            model = `prop_food_bs_chips`,
-            bone = 18905,
-            pos = vec3(0.13, 0.05, 0.02),
-            rot = vec3(-50.0, 16.0, 60.0)
-        },
-    })then
-        if lib.callback.await("qbx-smallresources:RemoveItem", false, item) then
-             TriggerServerEvent("consumables:server:addHunger", exports.qbx_core:GetPlayerData().metadata["hunger"] + Config.ConsumablesEat[item.name])
-            TriggerServerEvent('hud:server:RelieveStress', math.random(5, 10))
-        end
-    else
-        exports.qbx_core:Notify("Cancelled", "error")
-    end
-end)
-
-RegisterNetEvent('consumables:client:bs_Drink', function(item)
-    if lib.progressBar({
-        duration = 5000,
-        label = 'Drinking..',
-        useWhileDead = false,
-        canCancel = true,
-        disable = {
-            combat = true,
-        },
-        anim = {
-            dict = 'amb@world_human_drinking@coffee@male@idle_a',
-            clip = 'idle_c'
-        },
+## Add to @qbx_smallresources --> config -> shared.lua -> drink
+```lua
+    meatshake = {
+        min = 35,
+        max = 60,
         prop = {
             model = `prop_cs_bs_cup`,
             bone = 28422,
             pos = vec3(0.0, 0.0, 0.0,),
             rot = vec3(0.0, 0.0, 0.0)
         },
-    })then
-       if lib.callback.await("qbx-smallresources:RemoveItem", false, item) then
-            TriggerServerEvent("consumables:server:addThirst", exports.qbx_core:GetPlayerData().metadata["thirst"] + Config.ConsumablesDrink[item.name])
-            TriggerServerEvent('hud:server:RelieveStress', math.random(20, 45))
-        end
-    else
-        exports.qbx_core:Notify("Cancelled", "error")
-    end
-end)
+        anim = {
+            dict = 'amb@world_human_drinking@coffee@male@idle_a',
+            clip = 'idle_c'
+        }
+    },
+    milkshake = {
+        min = 40,
+        max = 75,
+        prop = {
+            model = `prop_cs_bs_cup`,
+            bone = 28422,
+            pos = vec3(0.0, 0.0, 0.0,),
+            rot = vec3(0.0, 0.0, 0.0)
+        },
+        anim = {
+            dict = 'amb@world_human_drinking@coffee@male@idle_a',
+            clip = 'idle_c'
+        }
+    },
 ```
 
-## Insert into @qbx_smallresources --> server --> consumables.lua
-```
---Burgershot
-exports.qbx_core:CreateUseableItem("fries", function(source, item)
-    local LocalPlayer = Player(source).state
-	if not LocalPlayer.invBusy then
-        TriggerClientEvent("consumables:client:bs_fries", source, item)
-    end
-end)
-
-exports.qbx_core:CreateUseableItem("bleeder", function(source, item)
-    local LocalPlayer = Player(source).state
-	if not LocalPlayer.invBusy then
-        TriggerClientEvent("consumables:client:bs_burger", source, item)
-    end
-end)
-
-exports.qbx_core:CreateUseableItem("moneyshot", function(source, item)
-    local LocalPlayer = Player(source).state
-	if not LocalPlayer.invBusy then
-        TriggerClientEvent("consumables:client:bs_burger", source, item)
-    end
-end)
-
-exports.qbx_core:CreateUseableItem("torpedo", function(source, item)
-    local LocalPlayer = Player(source).state
-	if not LocalPlayer.invBusy then
-        TriggerClientEvent("consumables:client:bs_burger", source, item)
-    end
-end)
-
-exports.qbx_core:CreateUseableItem("burger", function(source, item)
-    local LocalPlayer = Player(source).state
-	if not LocalPlayer.invBusy then
-        TriggerClientEvent("consumables:client:bs_burger", source, item)
-    end
-end)
-
-exports.qbx_core:CreateUseableItem("heartstopper", function(source, item)
-    local LocalPlayer = Player(source).state
-	if not LocalPlayer.invBusy then
-        TriggerClientEvent("consumables:client:bs_burger", source, item)
-    end
-end)
-
-exports.qbx_core:CreateUseableItem("meatfree", function(source, item)
-    local LocalPlayer = Player(source).state
-	if not LocalPlayer.invBusy then
-        TriggerClientEvent("consumables:client:bs_burger", source, item)
-    end
-end)
-
-exports.qbx_core:CreateUseableItem("meatshake", function(source, item)
-    local LocalPlayer = Player(source).state
-	if not LocalPlayer.invBusy then
-        TriggerClientEvent("consumables:client:bs_Drink", source, item)
-    end
-end)
-
-exports.qbx_core:CreateUseableItem("milkshake", function(source, item)
-    local LocalPlayer = Player(source).state
-	if not LocalPlayer.invBusy then
-        TriggerClientEvent("consumables:client:bs_Drink", source, item)
-    end
-end)
-```
-
-## Insert into @qbx_smallresources --> config.lua
-```
-ConsumablesEat = {
-    ["burger"] = math.random(20, 40),
-    ["bleeder"] = math.random(35, 50),
-    ["moneyshot"] = math.random(35, 45),
-    ["torpedo"] = math.random(35, 50),
-    ["heartstopper"] = math.random(100, 150),
-    ["meatfree"] = math.random(25, 50),
-    ["fries"] = math.random(10, 20),
-}
-
-ConsumablesDrink  = {
-    ["meatshake"] = math.random(35, 60),
-    ["milkshake"] = math.random(40, 75),
-}
+## Add to @qbx_smallresources --> config -> shared.lua -> food
+```lua
+    fries = {
+        min = 10,
+        max = 20,
+        prop = {
+            bone = 18905,
+            pos = vec3(0.13, 0.05, 0.02),
+            rot = vec3(-50.0, 16.0, 60.0),
+            model = "prop_food_bs_chips"
+        },
+        anim = {
+            dict = 'mp_player_inteat@burger',
+            clip = 'mp_player_int_eat_burger'
+        }
+    },
+    bleeder = {
+        min = 35,
+        max = 50,
+        prop = {
+            model = `prop_food_bs_burg1`,
+            bone = 18905,
+            pos = vec3(0.13, 0.05, 0.02),
+            rot = vec3(-50.0, 16.0, 60.0)
+        },
+        anim = {
+            dict = 'mp_player_inteat@burger',
+            clip = 'mp_player_int_eat_burger'
+        }
+    },
+    moneyshot = {
+        min = 35,
+        max = 45,
+        prop = {
+            model = `prop_food_bs_burg1`,
+            bone = 18905,
+            pos = vec3(0.13, 0.05, 0.02),
+            rot = vec3(-50.0, 16.0, 60.0)
+        },
+        anim = {
+            dict = 'mp_player_inteat@burger',
+            clip = 'mp_player_int_eat_burger'
+        }
+    },
+    torpedo = {
+        min = 35,
+        max = 50,
+        prop = {
+            model = `prop_food_bs_burg1`,
+            bone = 18905,
+            pos = vec3(0.13, 0.05, 0.02),
+            rot = vec3(-50.0, 16.0, 60.0)
+        },
+        anim = {
+            dict = 'mp_player_inteat@burger',
+            clip = 'mp_player_int_eat_burger'
+        }
+    },
+    burger = {
+        min = 20,
+        max = 40,
+        prop = {
+            model = `prop_food_bs_burg1`,
+            bone = 18905,
+            pos = vec3(0.13, 0.05, 0.02),
+            rot = vec3(-50.0, 16.0, 60.0)
+        },
+        anim = {
+            dict = 'mp_player_inteat@burger',
+            clip = 'mp_player_int_eat_burger'
+        }
+    },
+    heartstopper = {
+        min = 100,
+        max = 150,
+        prop = {
+            model = `prop_food_bs_burg1`,
+            bone = 18905,
+            pos = vec3(0.13, 0.05, 0.02),
+            rot = vec3(-50.0, 16.0, 60.0)
+        },
+        anim = {
+            dict = 'mp_player_inteat@burger',
+            clip = 'mp_player_int_eat_burger'
+        }
+    },
+    meatfree = {
+        min = 25,
+        max = 50,
+        prop = {
+            model = `prop_food_bs_burg1`,
+            bone = 18905,
+            pos = vec3(0.13, 0.05, 0.02),
+            rot = vec3(-50.0, 16.0, 60.0)
+        },
+        anim = {
+            dict = 'mp_player_inteat@burger',
+            clip = 'mp_player_int_eat_burger'
+        }
+    },
 ```
 
 ## Insert into ox_inventory/data/items.lua
-
 Add the pictures of the image folder to ox_inventory/web/images
 
-```
-['toy2'] = {
-		label = 'Ours Rose',
+```lua
+    ['toy2'] = {
+		label = 'Pink Teddy',
 		weight = 50,
 		stack = false,
 		close = false,
@@ -217,7 +175,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 	},
 
 	['toy1'] = {
-		label = 'Figurinne',
+		label = 'Action Figure',
 		weight = 50,
 		stack = false,
 		close = false,
@@ -289,7 +247,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 	},
 
 	['meatfree'] = {
-		label = 'Burger Végétarien',
+		label = 'Meat-free burger',
 		weight = 125,
 		stack = true,
 		close = true,
@@ -297,7 +255,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 	},
 
 	['fries'] = {
-		label = 'Barquette de Frites',
+		label = 'Fries',
 		weight = 125,
 		stack = true,
 		close = true,
@@ -305,7 +263,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 	},
 
 	['rawmeat'] = {
-		label = 'Steak Cru',
+		label = 'Raw Meat',
 		weight = 125,
 		stack = true,
 		close = true,
@@ -313,7 +271,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 	},
 
 	['lettuce'] = {
-		label = 'laitue',
+		label = 'Lettuce',
 		weight = 125,
 		stack = true,
 		close = true,
@@ -321,7 +279,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 	},
 
 	['bun'] = {
-		label = 'Pain à burger',
+		label = 'Bun',
 		weight = 125,
 		stack = true,
 		close = true,
@@ -329,7 +287,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 	},
 
 	['steak'] = {
-		label = 'Steak Cuit',
+		label = 'Steak',
 		weight = 125,
 		stack = true,
 		close = true,
@@ -337,7 +295,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 	},
 
 	['tomato'] = {
-		label = 'Tomate',
+		label = 'Tomato',
 		weight = 125,
 		stack = true,
 		close = true,
@@ -345,7 +303,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 	},
 
 	['mshakeformula'] = {
-		label = 'Formule à Milkshake',
+		label = 'Milkshake Formula',
 		weight = 125,
 		stack = true,
 		close = true,
@@ -353,7 +311,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 	},
 
 	['potato'] = {
-		label = 'Sac de Patates',
+		label = 'Potato',
 		weight = 1500,
 		stack = true,
 		close = true,
@@ -363,7 +321,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 
 Optionnal:
 If you want to make the raw meat a eat-able thing i guess :) (thanks to PrinceAlbert)
-```
+```lua
 ['rawmeat'] = {
     label = 'Steak Cru',
     weight = 125,
@@ -381,7 +339,7 @@ If you want to make the raw meat a eat-able thing i guess :) (thanks to PrinceAl
 ```
 
 ## Insert into ox_inventory/modules/items/containers.lua
-```
+```lua
 setContainerProperties('murdermeal', {
 	slots = 4,
 	maxWeight = 2500,
@@ -390,25 +348,25 @@ setContainerProperties('murdermeal', {
 ```
 
 ## Insert into @qbx-core/shared/jobs.lua
-```
+```lua
 ["burgershot"] = {
 	label = "Burgershot Employee",
 	defaultDuty = false,
     offDutyPay = true,
 	grades = {
-        ['0'] = {
+        {
             name = "Trainee",
             payment = 50
         },
-		['1'] = {
+		{
             name = "Employee",
             payment = 75
         },
-		['2'] = {
+		{
             name = "Manager",
             payment = 125
         },
-		['3'] = {
+		{
             name = "CEO",
 			isboss = true,
             payment = 150
@@ -418,7 +376,7 @@ setContainerProperties('murdermeal', {
 ```
 
 ## Uniqx coords Config
-```
+```lua
     duty = {
         coords = vector3(-1200.5, -902.27, 14.75),
         size = vector3(2.0, 0.5, 2),
@@ -464,4 +422,4 @@ setContainerProperties('murdermeal', {
         size = vector3(0.75, 3, 1.8),
         rotation = 75,
     },
-    ```
+```
