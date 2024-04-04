@@ -179,7 +179,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 50,
 		stack = false,
 		close = false,
-		description = 'An Action Figure From the late 90's'
+		description = 'An Action Figure From the late 90\'s'
 	},
 
 	['burger'] = {
