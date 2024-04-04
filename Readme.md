@@ -243,7 +243,7 @@ Add the pictures of the image folder to ox_inventory/web/images
 		weight = 125,
 		stack = true,
 		close = true,
-		description = 'Nice'N'Chunky MeatShake remulsified just for you'
+		description = 'Nice\'N\'Chunky MeatShake remulsified just for you'
 	},
 
 	['meatfree'] = {
