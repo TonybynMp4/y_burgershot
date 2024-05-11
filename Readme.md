@@ -25,7 +25,7 @@ ox_target - https://github.com/overextended/ox_target
 
 ## Add the following to your server.cfg
 ```
-ensure qbx_burgershot
+ensure y_burgershot
 ```
 
 ## Add to @qbx_smallresources --> config -> shared.lua -> drink
@@ -347,7 +347,7 @@ setContainerProperties('murdermeal', {
 })
 ```
 
-## Insert into @qbx-core/shared/jobs.lua
+## Insert into @qbx_core/shared/jobs.lua
 ```lua
 ['burgershot'] = {
 	label = 'Burgershot Employee',

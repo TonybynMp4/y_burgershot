@@ -23,7 +23,7 @@ local function craftPrep(recipe)
 		return exports.qbx_core:Notify(locale('error.notOnDuty'), "error")
 	end
 
-	local HasIngredients = lib.callback.await('qbx-burgershot:server:hasIngredients', false, recipe, "prep")
+	local HasIngredients = lib.callback.await('y_burgershot:server:hasIngredients', false, recipe, "prep")
 	if not HasIngredients then
 		return exports.qbx_core:Notify(locale("error.missing_ingredients"), 'error', 7500)
 	end
@@ -49,7 +49,7 @@ local function craftPrep(recipe)
 			rot = vec3(175.0, 160.0, 0.0)
 		},
 	}) then
-		TriggerServerEvent('qbx-burgershot:server:CraftMeal', recipe, "prep")
+		TriggerServerEvent('y_burgershot:server:CraftMeal', recipe, "prep")
 	else
 		exports.qbx_core:Notify(locale('error.cancel'), 'error', 7500)
 	end
@@ -60,7 +60,7 @@ local function craftDrink(recipe)
 		return exports.qbx_core:Notify(locale('error.notOnDuty'), "error")
 	end
 
-	local HasIngredients = lib.callback.await('qbx-burgershot:server:hasIngredients', false, recipe, "drinks")
+	local HasIngredients = lib.callback.await('y_burgershot:server:hasIngredients', false, recipe, "drinks")
 	if not HasIngredients then
 		return exports.qbx_core:Notify(locale("error.missing_ingredients"), 'error', 7500)
 	end
@@ -76,7 +76,7 @@ local function craftDrink(recipe)
 			move = true,
 		},
 	}) then
-		TriggerServerEvent('qbx-burgershot:server:CraftMeal', recipe, "drinks")
+		TriggerServerEvent('y_burgershot:server:CraftMeal', recipe, "drinks")
 	else
 		exports.qbx_core:Notify(locale('error.cancel'), 'error', 7500)
 	end
@@ -87,7 +87,7 @@ local function craftMeal(recipe)
 		return exports.qbx_core:Notify(locale('error.notOnDuty'), "error")
 	end
 
-	local HasIngredients = lib.callback.await('qbx-burgershot:server:hasIngredients', false, recipe, 'burgers')
+	local HasIngredients = lib.callback.await('y_burgershot:server:hasIngredients', false, recipe, 'burgers')
 	if not HasIngredients then
 		return exports.qbx_core:Notify(locale("error.missing_ingredients"), 'error', 7500)
 	end
@@ -108,7 +108,7 @@ local function craftMeal(recipe)
 			clip = 'givetake1_a'
 		},
 	}) then
-		TriggerServerEvent('qbx-burgershot:server:CraftMeal', recipe, 'burgers')
+		TriggerServerEvent('y_burgershot:server:CraftMeal', recipe, 'burgers')
 	else
 		exports.qbx_core:Notify(locale('error.cancel'), 'error', 7500)
 	end

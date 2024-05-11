@@ -1,5 +1,5 @@
 local sharedConfig = require 'config.shared'
-lib.versionCheck('TonybynMp4/qbx_burgershot')
+lib.versionCheck('TonybynMp4/y_burgershot')
 
 local function hasIngredients(source, recipe, recipeType)
     local Recipe = sharedConfig.recipes[recipeType][recipe]
@@ -16,9 +16,9 @@ local function hasIngredients(source, recipe, recipeType)
     return true
 end
 
-lib.callback.register('qbx-burgershot:server:hasIngredients', hasIngredients)
+lib.callback.register('y_burgershot:server:hasIngredients', hasIngredients)
 
-RegisterNetEvent('qbx-burgershot:server:CraftMeal', function(recipe, recipeType)
+RegisterNetEvent('y_burgershot:server:CraftMeal', function(recipe, recipeType)
     local source = source
     local Recipe = sharedConfig.recipes[recipeType][recipe]
     if not Recipe then return end
